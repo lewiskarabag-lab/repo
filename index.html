@@ -1,0 +1,902 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Jumia Career | Pay with PayPal</title>
+  <!-- Font Awesome 6 (Free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Inter & Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #f8f9fc;
+      color: #1e2b3c;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---------- NAVBAR ---------- */
+    .navbar {
+      background: #ffffff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #eef2f6;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      background: #f68b1e;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      font-weight: 700;
+      box-shadow: 0 6px 12px rgba(246, 139, 30, 0.25);
+    }
+
+    .logo-text {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #1e2b3c;
+    }
+
+    .logo-text span {
+      color: #f68b1e;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      font-weight: 500;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #3e4c5c;
+      font-size: 0.95rem;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a:hover {
+      color: #f68b1e;
+    }
+
+    .nav-links .badge {
+      background: #f68b1e;
+      color: white;
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 30px;
+      font-weight: 600;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.6rem;
+      color: #1e2b3c;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* ---------- MAIN LAYOUT ---------- */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 3rem;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .page-header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      color: #0f1a2b;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .page-header h1 i {
+      color: #f68b1e;
+      font-size: 2rem;
+    }
+
+    .page-header p {
+      color: #5e6f82;
+      font-size: 1rem;
+      max-width: 500px;
+    }
+
+    .stats-badge {
+      background: #fff1e0;
+      color: #b85e00;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #ffe0bb;
+    }
+
+    /* SEARCH & FILTER */
+    .search-section {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+      border: 1px solid #eef2f6;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+
+    .search-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      background: #f8f9fc;
+      border-radius: 60px;
+      padding: 0.4rem 0.4rem 0.4rem 1.2rem;
+      border: 1px solid #e6ecf2;
+      transition: 0.2s;
+      min-width: 240px;
+    }
+
+    .search-wrapper:focus-within {
+      border-color: #f68b1e;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(246, 139, 30, 0.1);
+    }
+
+    .search-wrapper i {
+      color: #8b9aab;
+    }
+
+    .search-wrapper input {
+      border: none;
+      background: transparent;
+      padding: 0.7rem 0.8rem;
+      font-size: 0.95rem;
+      width: 100%;
+      outline: none;
+    }
+
+    .search-wrapper button {
+      background: #f68b1e;
+      border: none;
+      color: white;
+      padding: 0.7rem 1.6rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.2s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .search-wrapper button:hover {
+      background: #e07a12;
+      transform: scale(1.02);
+    }
+
+    .filter-tags {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-tag {
+      background: #ffffff;
+      border: 1px solid #dde3ea;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #3e4c5c;
+      cursor: pointer;
+      transition: 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-tag i {
+      color: #f68b1e;
+      font-size: 0.8rem;
+    }
+
+    .filter-tag.active {
+      background: #f68b1e;
+      color: white;
+      border-color: #f68b1e;
+    }
+
+    .filter-tag.active i {
+      color: white;
+    }
+
+    /* JOB GRID */
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .job-card {
+      background: #ffffff;
+      border-radius: 26px;
+      padding: 1.8rem 1.5rem 1.5rem;
+      box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.04);
+      border: 1px solid #eef2f6;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .job-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 40px -12px rgba(246, 139, 30, 0.15);
+      border-color: #ffe2c2;
+    }
+
+    .job-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #f68b1e, #ffb347);
+      opacity: 0;
+      transition: 0.25s;
+    }
+
+    .job-card:hover::before {
+      opacity: 1;
+    }
+
+    .job-badge {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .job-type {
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 600;
+      font-size: 0.75rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      letter-spacing: 0.3px;
+    }
+
+    .job-type.urgent {
+      background: #fee9e7;
+      color: #b91c1c;
+    }
+
+    .job-salary {
+      font-weight: 700;
+      color: #1e2b3c;
+      font-size: 1rem;
+      background: #f8f9fc;
+      padding: 0.3rem 0.8rem;
+      border-radius: 40px;
+      border: 1px solid #e6ecf2;
+    }
+
+    .job-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 0.5rem;
+      color: #0f1a2b;
+      line-height: 1.3;
+    }
+
+    .job-company {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+      color: #5e6f82;
+      font-size: 0.9rem;
+    }
+
+    .company-logo {
+      width: 28px;
+      height: 28px;
+      background: #f2f5f9;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f68b1e;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .job-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      margin: 0.9rem 0 1.2rem;
+      font-size: 0.85rem;
+      color: #5e6f82;
+    }
+
+    .job-details span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .job-details i {
+      color: #f68b1e;
+      width: 16px;
+    }
+
+    .fee-note {
+      background: #fff9f2;
+      border: 1px dashed #f68b1e;
+      padding: 0.6rem 1rem;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0.8rem 0 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .fee-note .fee-label {
+      color: #b85e00;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .fee-note .fee-amount {
+      font-weight: 800;
+      color: #f68b1e;
+      font-size: 1.2rem;
+      letter-spacing: -0.3px;
+    }
+
+    .apply-btn {
+      background: #f68b1e;
+      border: none;
+      color: white;
+      font-weight: 700;
+      padding: 1rem 1rem;
+      border-radius: 60px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.25s;
+      margin-top: auto;
+      box-shadow: 0 8px 18px -6px rgba(246, 139, 30, 0.4);
+      width: 100%;
+    }
+
+    .apply-btn:hover {
+      background: #e07a12;
+      transform: scale(1.01);
+      box-shadow: 0 12px 22px -6px rgba(246, 139, 30, 0.5);
+    }
+
+    .apply-btn i {
+      font-size: 1rem;
+    }
+
+    .apply-btn:disabled {
+      background: #cbd5e1;
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* PAYMENT MODAL (PayPal only) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s ease;
+    }
+
+    .modal-overlay.show {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .payment-modal {
+      background: #ffffff;
+      max-width: 450px;
+      width: 100%;
+      border-radius: 32px;
+      padding: 2rem 1.8rem 1.8rem;
+      box-shadow: 0 40px 70px -20px rgba(0, 0, 0, 0.3);
+      transform: scale(0.95);
+      transition: 0.25s ease;
+      position: relative;
+    }
+
+    .modal-overlay.show .payment-modal {
+      transform: scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: #f2f5f9;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      color: #3e4c5c;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.15s;
+    }
+
+    .modal-close:hover {
+      background: #e2e8f0;
+      color: #0f1a2b;
+    }
+
+    .modal-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 0.25rem;
+      color: #0f1a2b;
+    }
+
+    .modal-sub {
+      color: #5e6f82;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .modal-sub i {
+      color: #f68b1e;
+    }
+
+    .payment-summary {
+      background: #f8f9fc;
+      border-radius: 20px;
+      padding: 1.2rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #eef2f6;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      margin-bottom: 0.7rem;
+      color: #3e4c5c;
+    }
+
+    .summary-row.total {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 0.9rem;
+      margin-top: 0.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #0f1a2b;
+    }
+
+    .summary-row.total span:last-child {
+      color: #f68b1e;
+      font-size: 1.3rem;
+    }
+
+    /* PayPal only method */
+    .payment-methods {
+      margin-bottom: 1.8rem;
+    }
+
+    .method {
+      width: 100%;
+      border: 2px solid #f68b1e;
+      background: #fff9f2;
+      border-radius: 18px;
+      padding: 1rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #b85e00;
+      cursor: default;
+      transition: 0.15s;
+    }
+
+    .method i {
+      font-size: 2rem;
+      color: #003087;
+    }
+
+    .method .paypal-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.3;
+    }
+
+    .method .paypal-text small {
+      font-weight: 400;
+      font-size: 0.75rem;
+      color: #5e6f82;
+    }
+
+    .method .check-icon {
+      margin-left: auto;
+      color: #22c55e;
+      font-size: 1.4rem;
+    }
+
+    .pay-now-btn {
+      background: #f68b1e;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 1rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 10px 20px -8px rgba(246, 139, 30, 0.5);
+    }
+
+    .pay-now-btn:hover {
+      background: #e07a12;
+      transform: scale(1.01);
+    }
+
+    .secure-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #8b9aab;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .secure-note i {
+      color: #22c55e;
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #1e2b3c;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .toast i {
+      color: #22c55e;
+      font-size: 1.2rem;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid #eef2f6;
+      background: #ffffff;
+      color: #8b9aab;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .footer i {
+      color: #f68b1e;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 0.8rem 1rem;
+      }
+
+      .nav-links {
+        gap: 1.2rem;
+      }
+
+      .page-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .jobs-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.2rem;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 0 0.5rem;
+        gap: 1rem;
+        border-top: 1px solid #eef2f6;
+        margin-top: 0.8rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .navbar {
+        flex-wrap: wrap;
+      }
+
+      .search-section {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .filter-tags {
+        justify-content: flex-start;
+      }
+
+      .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .stats-badge {
+        align-self: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 1rem 1rem 2rem;
+      }
+
+      .job-card {
+        padding: 1.5rem 1.2rem 1.2rem;
+        border-radius: 22px;
+      }
+
+      .job-title {
+        font-size: 1.2rem;
+      }
+
+      .page-header h1 {
+        font-size: 1.5rem;
+      }
+
+      .search-wrapper {
+        flex-wrap: wrap;
+        border-radius: 30px;
+        padding: 0.3rem;
+      }
+
+      .search-wrapper input {
+        width: 100%;
+        padding: 0.7rem 1rem;
+      }
+
+      .search-wrapper button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .payment-modal {
+        padding: 1.5rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo-area">
+      <div class="logo-icon">J</div>
+      <div class="logo-text">Jumia<span>Career</span></div>
+    </div>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#"><i class="fas fa-briefcase"></i> Jobs</a>
+      <a href="#"><i class="fas fa-building"></i> Companies</a>
+      <a href="#"><i class="fas fa-chart-line"></i> Career Hub</a>
+      <a href="#" class="badge"><i class="fas fa-bolt"></i> 24 new</a>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container">
+
+    <div class="page-header">
+      <div>
+        <h1><i class="fas fa-briefcase"></i> Career Opportunities</h1>
+        <p>Apply to verified jobs — a small application fee (USD) keeps the process serious and spam‑free.</p>
+      </div>
+      <div class="stats-badge">
+        <i class="fas fa-circle-check"></i> 137 active listings
+      </div>
+    </div>
+
+    <!-- SEARCH + FILTER -->
+    <div class="search-section">
+      <div class="search-wrapper">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search jobs, companies...">
+        <button id="searchBtn"><i class="fas fa-arrow-right"></i> Search</button>
+      </div>
+      <div class="filter-tags">
+        <div class="filter-tag active"><i class="fas fa-layer-group"></i> All</div>
+        <div class="filter-tag"><i class="fas fa-laptop"></i> Tech</div>
+        <div class="filter-tag"><i class="fas fa-truck"></i> Logistics</div>
+        <div class="filter-tag"><i class="fas fa-headset"></i> Support</div>
+      </div>
+    </div>
+
+    <!-- JOBS GRID (fees in USD) -->
+    <div class="jobs-grid" id="jobsGrid">
+
+      <!-- Job 1 -->
+      <div class="job-card" data-job-id="101" data-title="Senior Frontend Developer" data-company="Jumia Tech" data-fee="12">
+        <div class="job-badge">
+          <span class="job-type">Full-time</span>
+          <span class="job-salary">$ 3.5k – 4.8k</span>
+        </div>
+        <h2 class="job-title">Senior Frontend Developer</h2>
+        <div class="job-company">
+          <div class="company-logo">JT</div>
+          <span>Jumia Tech · Remote</span>
+        </div>
+        <div class="job-details">
+          <span><i class="fas fa-location-dot"></i> Lagos (Hybrid)</span>
+          <span><i class="fas fa-clock"></i> 3+ yrs exp</span>
+        </div>
+        <div class="fee-note">
+          <span class="fee-label"><i class="fas fa-ticket"></i> Application fee</span>
+          <span class="fee-amount">$12.00</span>
+        </div>
+        <button class="apply-btn" data-job-id="101" data-job-title="Senior Frontend Developer" data-fee="12">
+          <i class="fab fa-paypal"></i> Pay & Apply
+        </button>
+      </div>
+
+      <!-- Job 2 -->
+      <div class="job-card" data-job-id="102" data-title="Logistics Coordinator" data-company="Jumia Logistics" data-fee="8">
+        <div class="job-badge">
+          <span class="job-type urgent">Urgent</span>
+          <span class="job-salary">$ 2.4k – 3.2k</span>
+        </div>
+        <h2 class="job-title">Logistics Coordinator</h2>
+        <div class="job-company">
+          <div class="company-logo">JL</div>
+          <span>Jumia Logistics · On-site</span>
+        </div>
+        <div class="job-details">
+          <span><i class="fas fa-location-dot"></i> Abuja</span>
+          <span><i class="fas fa-clock"></i> 2+ yrs exp</span>
